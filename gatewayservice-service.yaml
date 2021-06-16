@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.21.0 (992df58d8)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: gatewayservice
+  name: gatewayservice
+spec:
+  ports:
+  - name: "5020"
+    port: 5020
+    targetPort: 5020
+  - name: "5021"
+    port: 5021
+    targetPort: 5021
+  selector:
+    io.kompose.service: gatewayservice
+status:
+  loadBalancer: {}
