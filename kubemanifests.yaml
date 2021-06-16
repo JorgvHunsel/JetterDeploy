@@ -1,0 +1,628 @@
+apiVersion: v1
+items:
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+      kompose.version: 1.21.0 (992df58d8)
+    creationTimestamp: null
+    labels:
+      io.kompose.service: authservice
+    name: authservice
+  spec:
+    ports:
+    - name: "5000"
+      port: 5000
+      targetPort: 5000
+    selector:
+      io.kompose.service: authservice
+  status:
+    loadBalancer: {}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+      kompose.version: 1.21.0 (992df58d8)
+    creationTimestamp: null
+    labels:
+      io.kompose.service: dbauth
+    name: dbauth
+  spec:
+    ports:
+    - name: "1433"
+      port: 1433
+      targetPort: 1433
+    selector:
+      io.kompose.service: dbauth
+  status:
+    loadBalancer: {}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+      kompose.version: 1.21.0 (992df58d8)
+    creationTimestamp: null
+    labels:
+      io.kompose.service: dbjetter
+    name: dbjetter
+  spec:
+    ports:
+    - name: "1433"
+      port: 1433
+      targetPort: 1433
+    selector:
+      io.kompose.service: dbjetter
+  status:
+    loadBalancer: {}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+      kompose.version: 1.21.0 (992df58d8)
+    creationTimestamp: null
+    labels:
+      io.kompose.service: dbprofile
+    name: dbprofile
+  spec:
+    ports:
+    - name: "27017"
+      port: 27017
+      targetPort: 27017
+    selector:
+      io.kompose.service: dbprofile
+  status:
+    loadBalancer: {}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+      kompose.version: 1.21.0 (992df58d8)
+    creationTimestamp: null
+    labels:
+      io.kompose.service: dbtimeline
+    name: dbtimeline
+  spec:
+    ports:
+    - name: "27017"
+      port: 27017
+      targetPort: 27017
+    selector:
+      io.kompose.service: dbtimeline
+  status:
+    loadBalancer: {}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+      kompose.version: 1.21.0 (992df58d8)
+    creationTimestamp: null
+    labels:
+      io.kompose.service: frontend
+    name: frontend
+  spec:
+    ports:
+    - name: "80"
+      port: 80
+      targetPort: 80
+    selector:
+      io.kompose.service: frontend
+  status:
+    loadBalancer: {}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+      kompose.version: 1.21.0 (992df58d8)
+    creationTimestamp: null
+    labels:
+      io.kompose.service: gatewayservice
+    name: gatewayservice
+  spec:
+    ports:
+    - name: "5020"
+      port: 5020
+      targetPort: 5020
+    - name: "5021"
+      port: 5021
+      targetPort: 5021
+    selector:
+      io.kompose.service: gatewayservice
+  status:
+    loadBalancer: {}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+      kompose.version: 1.21.0 (992df58d8)
+    creationTimestamp: null
+    labels:
+      io.kompose.service: jeetservice
+    name: jeetservice
+  spec:
+    ports:
+    - name: "5000"
+      port: 5000
+      targetPort: 5000
+    selector:
+      io.kompose.service: jeetservice
+  status:
+    loadBalancer: {}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+      kompose.version: 1.21.0 (992df58d8)
+    creationTimestamp: null
+    labels:
+      io.kompose.service: profileservice
+    name: profileservice
+  spec:
+    ports:
+    - name: "5000"
+      port: 5000
+      targetPort: 5000
+    selector:
+      io.kompose.service: profileservice
+  status:
+    loadBalancer: {}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+      kompose.version: 1.21.0 (992df58d8)
+    creationTimestamp: null
+    labels:
+      io.kompose.service: rabbitmq
+    name: rabbitmq
+  spec:
+    ports:
+    - name: "15672"
+      port: 15672
+      targetPort: 15672
+    - name: "5672"
+      port: 5672
+      targetPort: 5672
+    selector:
+      io.kompose.service: rabbitmq
+  status:
+    loadBalancer: {}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+      kompose.version: 1.21.0 (992df58d8)
+    creationTimestamp: null
+    labels:
+      io.kompose.service: timelineservice
+    name: timelineservice
+  spec:
+    ports:
+    - name: "5000"
+      port: 5000
+      targetPort: 5000
+    selector:
+      io.kompose.service: timelineservice
+  status:
+    loadBalancer: {}
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    annotations:
+      kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+      kompose.version: 1.21.0 (992df58d8)
+    creationTimestamp: null
+    labels:
+      io.kompose.service: authservice
+    name: authservice
+  spec:
+    replicas: 1
+    selector:
+      matchLabels:
+        io.kompose.service: authservice
+    strategy: {}
+    template:
+      metadata:
+        annotations:
+          kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+          kompose.version: 1.21.0 (992df58d8)
+        creationTimestamp: null
+        labels:
+          io.kompose.service: authservice
+      spec:
+        containers:
+        - image: beauzaby/authservice-jetter:latest
+          imagePullPolicy: ""
+          name: authservice
+          ports:
+          - containerPort: 5000
+          resources: {}
+        restartPolicy: Always
+        serviceAccountName: ""
+        volumes: null
+  status: {}
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    annotations:
+      kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+      kompose.version: 1.21.0 (992df58d8)
+    creationTimestamp: null
+    labels:
+      io.kompose.service: dbauth
+    name: dbauth
+  spec:
+    replicas: 1
+    selector:
+      matchLabels:
+        io.kompose.service: dbauth
+    strategy: {}
+    template:
+      metadata:
+        annotations:
+          kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+          kompose.version: 1.21.0 (992df58d8)
+        creationTimestamp: null
+        labels:
+          io.kompose.service: dbauth
+      spec:
+        containers:
+        - env:
+          - name: ACCEPT_EULA
+            value: Y
+          - name: SA_PASSWORD
+            value: Koekje0495
+          image: beauzaby/db-auth-jetter:dev
+          imagePullPolicy: ""
+          name: dbauth
+          ports:
+          - containerPort: 1433
+          resources: {}
+        restartPolicy: Always
+        serviceAccountName: ""
+        volumes: null
+  status: {}
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    annotations:
+      kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+      kompose.version: 1.21.0 (992df58d8)
+    creationTimestamp: null
+    labels:
+      io.kompose.service: dbjetter
+    name: dbjetter
+  spec:
+    replicas: 1
+    selector:
+      matchLabels:
+        io.kompose.service: dbjetter
+    strategy: {}
+    template:
+      metadata:
+        annotations:
+          kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+          kompose.version: 1.21.0 (992df58d8)
+        creationTimestamp: null
+        labels:
+          io.kompose.service: dbjetter
+      spec:
+        containers:
+        - env:
+          - name: ACCEPT_EULA
+            value: Y
+          - name: SA_PASSWORD
+            value: Koekje0495
+          image: beauzaby/db-jeet-jetter:dev
+          imagePullPolicy: ""
+          name: dbjetter
+          ports:
+          - containerPort: 1433
+          resources: {}
+        restartPolicy: Always
+        serviceAccountName: ""
+        volumes: null
+  status: {}
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    annotations:
+      kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+      kompose.version: 1.21.0 (992df58d8)
+    creationTimestamp: null
+    labels:
+      io.kompose.service: dbprofile
+    name: dbprofile
+  spec:
+    replicas: 1
+    selector:
+      matchLabels:
+        io.kompose.service: dbprofile
+    strategy: {}
+    template:
+      metadata:
+        annotations:
+          kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+          kompose.version: 1.21.0 (992df58d8)
+        creationTimestamp: null
+        labels:
+          io.kompose.service: dbprofile
+      spec:
+        containers:
+        - image: mongo:latest
+          imagePullPolicy: ""
+          name: dbprofile
+          ports:
+          - containerPort: 27017
+          resources: {}
+        restartPolicy: Always
+        serviceAccountName: ""
+        volumes: null
+  status: {}
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    annotations:
+      kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+      kompose.version: 1.21.0 (992df58d8)
+    creationTimestamp: null
+    labels:
+      io.kompose.service: dbtimeline
+    name: dbtimeline
+  spec:
+    replicas: 1
+    selector:
+      matchLabels:
+        io.kompose.service: dbtimeline
+    strategy: {}
+    template:
+      metadata:
+        annotations:
+          kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+          kompose.version: 1.21.0 (992df58d8)
+        creationTimestamp: null
+        labels:
+          io.kompose.service: dbtimeline
+      spec:
+        containers:
+        - image: mongo:latest
+          imagePullPolicy: ""
+          name: dbtimeline
+          ports:
+          - containerPort: 27017
+          resources: {}
+        restartPolicy: Always
+        serviceAccountName: ""
+        volumes: null
+  status: {}
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    annotations:
+      kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+      kompose.version: 1.21.0 (992df58d8)
+    creationTimestamp: null
+    labels:
+      io.kompose.service: frontend
+    name: frontend
+  spec:
+    replicas: 1
+    selector:
+      matchLabels:
+        io.kompose.service: frontend
+    strategy: {}
+    template:
+      metadata:
+        annotations:
+          kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+          kompose.version: 1.21.0 (992df58d8)
+        creationTimestamp: null
+        labels:
+          io.kompose.service: frontend
+      spec:
+        containers:
+        - image: beauzaby/frontend-jetter:105
+          imagePullPolicy: ""
+          name: frontend
+          ports:
+          - containerPort: 80
+          resources: {}
+        restartPolicy: Always
+        serviceAccountName: ""
+        volumes: null
+  status: {}
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    annotations:
+      kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+      kompose.version: 1.21.0 (992df58d8)
+    creationTimestamp: null
+    labels:
+      io.kompose.service: gatewayservice
+    name: gatewayservice
+  spec:
+    replicas: 1
+    selector:
+      matchLabels:
+        io.kompose.service: gatewayservice
+    strategy: {}
+    template:
+      metadata:
+        annotations:
+          kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+          kompose.version: 1.21.0 (992df58d8)
+        creationTimestamp: null
+        labels:
+          io.kompose.service: gatewayservice
+      spec:
+        containers:
+        - image: beauzaby/gatewayservice-jetter:latest
+          imagePullPolicy: ""
+          name: gatewayservice
+          ports:
+          - containerPort: 5020
+          - containerPort: 5021
+          resources: {}
+        restartPolicy: Always
+        serviceAccountName: ""
+        volumes: null
+  status: {}
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    annotations:
+      kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+      kompose.version: 1.21.0 (992df58d8)
+    creationTimestamp: null
+    labels:
+      io.kompose.service: jeetservice
+    name: jeetservice
+  spec:
+    replicas: 1
+    selector:
+      matchLabels:
+        io.kompose.service: jeetservice
+    strategy: {}
+    template:
+      metadata:
+        annotations:
+          kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+          kompose.version: 1.21.0 (992df58d8)
+        creationTimestamp: null
+        labels:
+          io.kompose.service: jeetservice
+      spec:
+        containers:
+        - image: beauzaby/jeetservice-jetter:latest
+          imagePullPolicy: ""
+          name: jeetservice
+          ports:
+          - containerPort: 5000
+          resources: {}
+        restartPolicy: Always
+        serviceAccountName: ""
+        volumes: null
+  status: {}
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    annotations:
+      kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+      kompose.version: 1.21.0 (992df58d8)
+    creationTimestamp: null
+    labels:
+      io.kompose.service: profileservice
+    name: profileservice
+  spec:
+    replicas: 1
+    selector:
+      matchLabels:
+        io.kompose.service: profileservice
+    strategy: {}
+    template:
+      metadata:
+        annotations:
+          kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+          kompose.version: 1.21.0 (992df58d8)
+        creationTimestamp: null
+        labels:
+          io.kompose.service: profileservice
+      spec:
+        containers:
+        - image: beauzaby/profileservice-jetter:latest
+          imagePullPolicy: ""
+          name: profileservice
+          ports:
+          - containerPort: 5000
+          resources: {}
+        restartPolicy: Always
+        serviceAccountName: ""
+        volumes: null
+  status: {}
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    annotations:
+      kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+      kompose.version: 1.21.0 (992df58d8)
+    creationTimestamp: null
+    labels:
+      io.kompose.service: rabbitmq
+    name: rabbitmq
+  spec:
+    replicas: 1
+    selector:
+      matchLabels:
+        io.kompose.service: rabbitmq
+    strategy: {}
+    template:
+      metadata:
+        annotations:
+          kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+          kompose.version: 1.21.0 (992df58d8)
+        creationTimestamp: null
+        labels:
+          io.kompose.service: rabbitmq
+      spec:
+        containers:
+        - image: rabbitmq:3.8-management
+          imagePullPolicy: ""
+          name: rabbitmq
+          ports:
+          - containerPort: 15672
+          - containerPort: 5672
+          resources: {}
+        restartPolicy: Always
+        serviceAccountName: ""
+        volumes: null
+  status: {}
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    annotations:
+      kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+      kompose.version: 1.21.0 (992df58d8)
+    creationTimestamp: null
+    labels:
+      io.kompose.service: timelineservice
+    name: timelineservice
+  spec:
+    replicas: 1
+    selector:
+      matchLabels:
+        io.kompose.service: timelineservice
+    strategy: {}
+    template:
+      metadata:
+        annotations:
+          kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+          kompose.version: 1.21.0 (992df58d8)
+        creationTimestamp: null
+        labels:
+          io.kompose.service: timelineservice
+      spec:
+        containers:
+        - image: beauzaby/timelineservice-jetter:latest
+          imagePullPolicy: ""
+          name: timelineservice
+          ports:
+          - containerPort: 5000
+          resources: {}
+        restartPolicy: Always
+        serviceAccountName: ""
+        volumes: null
+  status: {}
+kind: List
+metadata: {}
+
