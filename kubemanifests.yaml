@@ -106,6 +106,7 @@ items:
       io.kompose.service: frontend
     name: frontend
   spec:
+    type: LoadBalancer
     ports:
     - name: "80"
       port: 80
@@ -125,6 +126,7 @@ items:
       io.kompose.service: gatewayservice
     name: gatewayservice
   spec:
+    type: LoadBalancer
     ports:
     - name: "5020"
       port: 5020
@@ -185,6 +187,7 @@ items:
       io.kompose.service: rabbitmq
     name: rabbitmq
   spec:
+    type: LoadBalancer
     ports:
     - name: "15672"
       port: 15672
